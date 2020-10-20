@@ -12,6 +12,7 @@
 //pages
 //@import './containers/Login.scss';
 @import './containers/Register.scss';
+@import './containers/NotFound.scss';
 
 
 
@@ -57,4 +58,19 @@ body {
   height: 50px;
   letter-spacing: 1px;
   margin: 10px 0px;
+}
+
+a {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: underline;
 }

@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Register = () => (
   <section className='register'>
-    <section className='register__container'>
       <h1 className='text-notfound'>404</h1>
       <h2 className='text-notfound'>Page Not Found</h2>
       <Link to="'/'">Go Back</Link>
-    </section>
   </section>
 );
 

@@ -21,7 +21,7 @@ body {
 }*/
 
 .register {
-  background-image: linear-gradient(#21c08b, #8f57fd);
+  background-image: linear-gradient(#21c08b,#8f57fd);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -53,20 +53,6 @@ body {
   flex-direction: column;
 }
 
-.register__container a {
-  color: white;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-}
-
-.register__container a:hover {
-  text-decoration: underline;
-}
-
-.login__container--remember-me a:hover {
-  text-decoration: underline;
-}
 
 .login__container--social-media > div {
   align-items: center;

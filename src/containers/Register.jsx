@@ -1,6 +1,4 @@
 import React from 'react';
-//nuevo archivo scss
-import '../assets/styles/containers/Register.scss';
 
 //el tag a se cambia por Link para que no se refresque la pagina
 import { Link } from 'react-router-dom';
@@ -15,7 +13,7 @@ const Register = () => (
         <input className='input' type='password' placeholder='Contraseña' />
         <button className='button'>Registrarme</button>
       </form>
-      <Link to="'/login'">Iniciar sesión</Link>
+      <Link to='/login'>Iniciar sesión</Link>
     </section>
   </section>
 );
