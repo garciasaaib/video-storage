@@ -1,5 +1,8 @@
 {
   "initialState": {
+    "user": {},
+    "playing": {},
+    "search": [],
     "mylist": [],
     "trends": [
       {

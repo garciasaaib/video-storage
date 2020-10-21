@@ -1,42 +1,75 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import useInitialState from '../hooks/useInitialState';
 
-const API = 'http://localhost:3000/initialState';
-
-const Home = () => {
-  const initialState = useInitialState(API);
+const Home = ({ search, mylist, trends, originals }) => {
   return (
     <div className='app'>
-      <Search />
+      <Search
+        isHome //var in state
+      />
 
-      {initialState.mylist.length > 0 && (
+      {search.length > 0 && (
+        <Categories title='Mi busqueda'>
+          <Carousel>
+            {search.map((item) => (
+              <CarouselItem
+                key={item.id}
+                {...item}
+                isList={true}
+              />
+            ))}
+          </Carousel>
+        </Categories>
+      )}
+
+      {mylist.length > 0 && (
         <Categories title='Mi lista'>
           <Carousel>
-            {initialState.mylist.map( item =>
-              <CarouselItem key={item.id} {...item} />)}
+            {mylist.map((item) => (
+              <CarouselItem
+                key={item.id}
+                isList={true}
+                {...item}
+              />
+            ))}
           </Carousel>
         </Categories>
       )}
 
       <Categories title='Tendencias'>
         <Carousel>
-          {initialState.trends.map( item =>
+          {trends.map((item) =>
             <CarouselItem key={item.id} {...item} />)}
         </Carousel>
       </Categories>
 
       <Categories title='Originales'>
         <Carousel>
-          {initialState.originals.map( item =>
+          {originals.map((item) =>
             <CarouselItem key={item.id} {...item} />)}
         </Carousel>
       </Categories>
     </div>
-  )
-}
+  );
+};
 
-export default Home;
+// de esta manera declaramos las listas del state global que queremos
+const mapStateToProps = (state) => {
+  return {
+    mylist: state.mylist,
+    trends: state.trends,
+    originals: state.originals,
+    search: state.search,
+  };
+};
+
+// al momento de exportar es donde obtenemos los datos del estado
+// obtenemos el state como props en el componente
+// esto es posible mediante conect
+export default connect(mapStateToProps, null)(Home);
+
+// export default Home;

@@ -10,7 +10,9 @@ const Login = () => (
       <form className='register__container--form'>
         <input className='input' type='text' placeholder='Correo' />
         <input className='input' type='password' placeholder='Contraseña' />
-        <button className='button'>Iniciar sesión</button>
+        <Link to='/'>
+          <button className='button'>Iniciar sesión</button>
+        </Link>
         <div className='login__container--remember-me'>
           <label>
             <input type='checkbox' id='cbox1' value='first_checkbox' />
