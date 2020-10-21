@@ -33,10 +33,10 @@ const Header = (props) => {
         <ul>
           {hasUser ?
             <li><Link to='/'>{user.name}</Link></li> :
-            null }
+            null}
           {hasUser ?
             <li><a href='#logout' onClick={handleLogOut}>Cerrar Sesión</a></li> :
-            <li><Link to='/login'>Iniciar Sesión</Link></li> }
+            <li><Link to='/login'>Iniciar Sesión</Link></li>}
 
         </ul>
       </div>

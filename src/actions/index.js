@@ -20,3 +20,8 @@ export const logoutRequest = (payload) => ({ //cierra sesion
   type: 'LOGOUT_REQUEST',
   payload,
 });
+
+export const registerRequest = (payload) => ({ //cierra sesion
+  type: 'REGISTER_REQUEST',
+  payload,
+});
