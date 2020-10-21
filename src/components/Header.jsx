@@ -1,25 +1,57 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'; //conecta el GeneralState
+import { logoutRequest } from '../actions'; //va y borra el usuario del state
+import gravatar from '../utils/gravatar';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/user-icon.png';
 
+const Header = (props) => {
 
-const Header = () => (
-  <header className='header'>
-    <Link to='/'>
-      <img className='header__img' src={logo} alt='Platzi Video' />
-    </Link>
-    <div className='header__menu'>
-      <div className='header__menu--profile'>
-        <img src={userIcon} alt='' />
-        <p>Perfil</p>
+  const { user } = props; //obtenemos del state el user
+
+  const hasUser = Object.keys(user).length > 0; //verificamos si existe en realidad uyn user
+  //esto lo usamos para seleccionar la imagen de usuario
+
+  const handleLogOut = () => { //funciopn que borra el user del state
+    props.logoutRequest({});
+  };
+
+  return (
+    <header className='header'>
+      <Link to='/'>
+        <img className='header__img' src={logo} alt='Platzi Video' />
+      </Link>
+      <div className='header__menu'>
+        <div className='header__menu--profile'>
+          <img
+            src={hasUser ? gravatar(user.email) : userIcon}
+            alt={hasUser ? user.email : 'imagen de usuario'}
+          />
+          <p>Perfil</p>
+        </div>
+        <ul>
+          {hasUser ?
+            <li><Link to='/'>{user.name}</Link></li> :
+            null }
+          {hasUser ?
+            <li><a href='#logout' onClick={handleLogOut}>Cerrar Sesión</a></li> :
+            <li><Link to='/login'>Iniciar Sesión</Link></li> }
+
+        </ul>
       </div>
-      <ul>
-        <li><Link to='/'>Cuenta</Link></li>
-        <li><Link to='/Login'>Cerrar Sesión</Link></li>
-      </ul>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
-export default Header;
+const mapStateToProps = (state) => { //para obtener el usuario
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = { //para sobreescribir el usuario
+  logoutRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
