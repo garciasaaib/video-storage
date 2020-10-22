@@ -11,6 +11,7 @@ import reducer from './reducers'; //archivo contenedor de las funciones que mand
 + estado inicial importado
 + este ultimo nos permite usar la webtool para chrome
 */
+
 const store = createStore(
   reducer,
 	initialState,

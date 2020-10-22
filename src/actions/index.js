@@ -21,12 +21,17 @@ export const logoutRequest = (payload) => ({ //cierra sesion
   payload,
 });
 
-export const registerRequest = (payload) => ({ //cierra sesion
+export const registerRequest = (payload) => ({
   type: 'REGISTER_REQUEST',
   payload,
 });
 
-export const getVideoSource = (payload) => ({ //cierra sesion
+export const getVideoSource = (payload) => ({
   type: 'GET_VIDEO_SOURCE',
+  payload,
+});
+
+export const searchRequest = (payload) => ({
+  type: 'SEARCH_REQUEST',
   payload,
 });

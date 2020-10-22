@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'; //conecta el GeneralState
+import classNames from 'classnames';
 import { logoutRequest } from '../actions'; //va y borra el usuario del state
 import gravatar from '../utils/gravatar';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
@@ -8,7 +9,7 @@ import userIcon from '../assets/static/user-icon.png';
 
 const Header = (props) => {
 
-  const { user } = props; //obtenemos del state el user
+  const { user, isLogin, isRegister } = props; //obtenemos del state el user
 
   const hasUser = Object.keys(user).length > 0; //verificamos si existe en realidad uyn user
   //esto lo usamos para seleccionar la imagen de usuario
@@ -17,8 +18,13 @@ const Header = (props) => {
     props.logoutRequest({});
   };
 
+  const headerClass = classNames('header', {
+    isLogin,
+    isRegister,
+  });
+
   return (
-    <header className='header'>
+    <header className={headerClass}>
       <Link to='/'>
         <img className='header__img' src={logo} alt='Platzi Video' />
       </Link>

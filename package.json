@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.6",
     "json-server": "^0.16.2",
     "md5": "^2.3.0",
     "prop-types": "^15.7.2",

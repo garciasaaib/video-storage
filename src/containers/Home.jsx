@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 
 const Home = ({ search, mylist, trends, originals }) => {
+
   return (
     <div className='app'>
-      <Search
-        isHome //var in state
-      />
+      <Header />
+      <Search />
 
       {search.length > 0 && (
         <Categories title='Mi busqueda'>
@@ -19,7 +20,6 @@ const Home = ({ search, mylist, trends, originals }) => {
               <CarouselItem
                 key={item.id}
                 {...item}
-                isList={true}
               />
             ))}
           </Carousel>

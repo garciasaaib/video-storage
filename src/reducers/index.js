@@ -44,6 +44,18 @@ const reducer = (state, action) => {
         playing: state.trends.find((item) => item.id === Number(action.payload)) || state.originals.find((item) => item.id === Number(action.payload)) || [],
       };
 
+    case 'SEARCH_REQUEST':
+      //quiero obtener una lista de objetos de video [id,title,url,language,...]
+      console.log(action.payload);
+      return {
+        ...state,
+        search: state.trends
+          .concat(state.originals) //concatena trends y originals
+          .filter((item) => item.title.toLowerCase()
+            .includes(action.payload.toLowerCase())),
+
+      };
+
     default: return state; //aqui simplemente regresamos el estado tal cual se recibe
   }
 };
