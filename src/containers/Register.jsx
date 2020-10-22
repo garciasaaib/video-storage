@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { registerRequest } from '../actions';
 import { Link } from 'react-router-dom'; //el tag a se cambia por Link para que no se refresque la pagina
+import { registerRequest } from '../actions';
 
 //mediante props se accede al globalstate
 const Register = (props) => {
-  
+
   const [form, setValues] = useState({ //estas variables seran las de form
     name: '',
     email: '',
     password: '',
-  })
+  });
 
   const handleInput = (event) => { //cada cambio en el form se refleja en la data por setValues
     setValues({
@@ -19,11 +19,11 @@ const Register = (props) => {
     });
   };
 
-  const handleSubmit = (event) => { //al hacer click en el boton 
-    event.preventDefault(); //previene que 
+  const handleSubmit = (event) => { //al hacer click en el boton
+    event.preventDefault(); //previene que
     props.registerRequest(form); //accede al set value de redux de registerRequest, el valor es form
     props.history.push('/'); //se redirecciona a la ruta /
-  }
+  };
 
   return (
     <section className='register'>
@@ -31,21 +31,21 @@ const Register = (props) => {
         <h2>Regístrate</h2>
         <form className='register__container--form' onSubmit={handleSubmit}>
           <input
-            name="name"
-            className='input' 
-            type='text' 
-            placeholder='Nombre' 
+            name='name'
+            className='input'
+            type='text'
+            placeholder='Nombre'
             onChange={handleInput}
           />
           <input
-            name="email"
+            name='email'
             className='input'
             type='text'
             placeholder='Correo'
             onChange={handleInput}
           />
           <input
-            name="password"
+            name='password'
             className='input'
             type='password'
             placeholder='Contraseña'

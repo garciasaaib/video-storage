@@ -25,3 +25,8 @@ export const registerRequest = (payload) => ({ //cierra sesion
   type: 'REGISTER_REQUEST',
   payload,
 });
+
+export const getVideoSource = (payload) => ({ //cierra sesion
+  type: 'GET_VIDEO_SOURCE',
+  payload,
+});
