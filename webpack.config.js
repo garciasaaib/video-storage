@@ -1,17 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: [
     './src/frontend/index.js',
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&overlay=false',
+    'webpack-hot-middleware/client?path=/__what&timeout=2000&overlay=false',
+    // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&overlay=false',
   ],
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'assets/app.js',
     publicPath: '/',
   },
   resolve: {
@@ -61,12 +61,8 @@ module.exports = {
     /* webpack-hot-middleware */
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: './index.html',
-    }),
     new MiniCssExtractPlugin({
-      filename: 'assets/[name].css',
+      filename: 'assets/app.css',
     }),
   ],
   devServer: {

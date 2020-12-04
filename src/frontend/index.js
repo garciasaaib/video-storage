@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'; //Componente contenedor del GlobalState
 import { createStore } from 'redux'; //funcion para crear el GlobalState
+import { createBrowserHistory } from 'history';
+import { Router } from 'react-router';
 import App from './routes/App';
 import initialState from './initialState'; //variable con la data
 import reducer from './reducers'; //archivo contenedor de las funciones que mandan o traen datos del GlobalState
@@ -11,16 +13,18 @@ import reducer from './reducers'; //archivo contenedor de las funciones que mand
 + estado inicial importado
 + este ultimo nos permite usar la webtool para chrome
 */
-
+const history = createBrowserHistory();
 const store = createStore(
   reducer,
-	initialState,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={history}>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('app'),
 );
