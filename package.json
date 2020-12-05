@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "history": "^5.0.0",
+    "ignore-styles": "^5.0.1",
     "json-server": "^0.16.3",
     "md5": "^2.3.0",
     "nodemon": "^2.0.6",
